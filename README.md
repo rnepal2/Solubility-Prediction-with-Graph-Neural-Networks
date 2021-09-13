@@ -1,2 +1,3 @@
-# Aqueous-Solubility-with-Graph-Neural-Networks
-GNN, GCN, Molecular Solubility, RDKit, Cheminformatics
+# Prediction of Aqueous Solubility of Drug Molecules
+
+Classification and regression models using Graph Neural Networks.
