@@ -4,16 +4,17 @@ from torch.nn import Linear
 from torch_geometric.nn import GCNConv
 from torch_geometric.nn import global_mean_pool as gap
 
+SEED = 2**32-1
 
 """
 Graph-Convolutional Neural Network
 """
 
 class GCN(torch.nn.Module):
-    def __init__(self, hidden_channels):
+    def __init__(self, n_features, hidden_channels):
         super(GCN, self).__init__()
-        torch.manual_seed(21)
-        self.conv1 = GCNConv(30, hidden_channels)
+        torch.manual_seed(SEED)
+        self.conv1 = GCNConv(n_features, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, int(hidden_channels/2))
         self.conv3 = GCNConv(int(hidden_channels/2), int(hidden_channels/4))
         self.linear = Linear(int(hidden_channels/4), 1)
