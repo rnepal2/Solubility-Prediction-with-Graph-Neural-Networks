@@ -10,13 +10,14 @@ Graph-Convolutional Neural Networks
 """
 
 class GCN(torch.nn.Module):
-    def __init__(self, n_features, hidden_channels):
+    def __init__(self, n_features, hidden_channels, dropout=0.2):
         super(GCN, self).__init__()
         torch.manual_seed(21)
         self.conv1 = GCNConv(n_features, hidden_channels)
         self.conv2 = GCNConv(hidden_channels, int(hidden_channels/2))
         self.conv3 = GCNConv(int(hidden_channels/2), int(hidden_channels/4))
         self.linear = Linear(int(hidden_channels/4), 1)
+        self.dropout = dropout
 
     def forward(self, data, edge_index, batch):
         x, targets = data.x, data.y
@@ -31,9 +32,9 @@ class GCN(torch.nn.Module):
         x = gap(x, batch)
         
         # 3. Apply the final classifier
-        x = F.dropout(x, p=0.25, training=self.training)
+        x = F.dropout(x, p=self.dropout, training=self.training)
 
-        # model output from forward and loss 
+        # 4. model output from forward and loss 
         out = self.linear(x)  
         loss = torch.nn.BCEWithLogitsLoss()(out, targets.reshape(-1, 1).type_as(out))
 
@@ -49,17 +50,18 @@ class GAT(torch.nn.Module):
         self.conv2 = GATConv(hidden_channels*heads, int(hidden_channels/2), heads=heads, dropout=dropout)
         self.conv3 = GATConv(int(hidden_channels/2)*heads, int(hidden_channels/4), heads=heads, dropout=dropout)
         self.linear = Linear(int(hidden_channels/4)*heads, 1)
+        self.dropout = dropout
 
-    def forward(self, data, edge_index, batch, dropout=0.3):
+    def forward(self, data, edge_index, batch):
         x, targets = data.x, data.y
         
         # 1. Obtain the node embeddings
         x = self.conv1(x, edge_index)
         x = x.elu()
-        x = F.dropout(x, p=dropout, training=self.training)
+        x = F.dropout(x, p=self.dropout, training=self.training)
         x = self.conv2(x, edge_index)
         x = x.elu()
-        x = F.dropout(x, p=dropout, training=self.training)
+        x = F.dropout(x, p=self.dropout, training=self.training)
         x = self.conv3(x, edge_index)
 
         # 2. Aggregating message passing/embeddings
@@ -67,7 +69,7 @@ class GAT(torch.nn.Module):
         
         # 3. Apply the final classifier
         x = x.relu()
-        x = F.dropout(x, p=dropout, training=self.training) 
+        x = F.dropout(x, p=self.dropout, training=self.training) 
         out = self.linear(x)
 
         loss = torch.nn.BCEWithLogitsLoss()(out, targets.reshape(-1, 1).type_as(out))
