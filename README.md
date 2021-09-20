@@ -15,4 +15,4 @@
 - LightGBM
 
 #### Model parameters
-![plot](./params_tuning.PNG)
+![Screenshot](params_tuning.PNG)
