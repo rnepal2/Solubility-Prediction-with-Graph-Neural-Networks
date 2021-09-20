@@ -13,3 +13,6 @@
 - DeepChem
 - Scikit-Learn
 - LightGBM
+
+#### Hyper-parameters search:
+![alt text](https://github.com/rnepal2/Aqueous-Solubility-with-Graph-Neural-Networks/params_tuning.PNG?raw=true)
