@@ -14,5 +14,5 @@
 - Scikit-Learn
 - LightGBM
 
-#### Hyper-parameters search:
-![Alt text](./params_tuning.PNG?raw=true "Title")
+#### Model parameters
+![plot](./params_tuning.PNG)
