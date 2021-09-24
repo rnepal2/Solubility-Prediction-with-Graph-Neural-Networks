@@ -14,5 +14,3 @@
 - Scikit-Learn
 - LightGBM
 
-#### Model parameters
-![Screenshot](params_tuning.PNG)
