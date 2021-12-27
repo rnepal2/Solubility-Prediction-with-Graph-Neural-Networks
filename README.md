@@ -18,5 +18,5 @@
 #### Hyperparameters tuning
 
 <p align="center">
-  <img src="https://github.com/rnepal2/Solubility-Prediction-with-Graph-Neural-Networks/blob/main/params_tuning.png" width="400" height="300">
+  <img src="https://github.com/rnepal2/Solubility-Prediction-with-Graph-Neural-Networks/blob/main/params_tuning.png" width="600" height="300">
 </p>
