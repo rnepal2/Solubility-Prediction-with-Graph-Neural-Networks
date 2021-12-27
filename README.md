@@ -6,6 +6,10 @@
 #### Data source:
 - Aqueous solubility dataset (for about 9000 molecules): https://www.nature.com/articles/s41597-019-0151-1
 
+<p align="center">
+  <img src="https://github.com/rnepal2/Solubility-Prediction-with-Graph-Neural-Networks/blob/main/example%20molecules.png" width="600" height="250">
+</p>
+
 #### Dependencies
 - PyTorch
 - PyTorch-Geometric
