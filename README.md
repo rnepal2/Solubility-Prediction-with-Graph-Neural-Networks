@@ -50,5 +50,5 @@ Predicting the aqueous solubility of small organic molecules is a critical step 
 -   `data/`: Directory containing the dataset files.
 
 ### Read a Summary
-Want to read a more readable version of this project? You can find it here: [Prediction of Aqueous Solubility](https://meromorphy.com/2025/05/31/molecular-solubility-prediction-with-gcn.html)
+Want to read a more readable version of this project? You can find it here: [Prediction of Aqueous Solubility](https://meromorphy.com/projects/2025/05/31/molecular-solubility-prediction-with-gcn.html)
 
